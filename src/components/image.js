@@ -1,31 +1,34 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-const ImageStyle = (width, height) => {
+const ImageStyle = (width = 100, height = 100) => {
   return {
     width,
     height,
-    objectFit: "cover"
+    objectFit: 'cover'
   }
 }
 
 export default class Image extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
   }
 
-  render() {
-    const { src, isSelected, onImageClick } = this.props
+  render () {
+    const { src, isSelected, onImageClick, width, height } = this.props
     return (
-      <div className={`responsive${isSelected ? " selected" : ""}`}
-        onClick={onImageClick}>
-        <img src={src}
-          className={`thumbnail${isSelected ? " selected" : ""}`}
-          style={ImageStyle(150, 150)}
+      <div
+                className={`responsive${isSelected ? ' selected' : ''}`}
+        onClick={onImageClick}
+      >
+        <img
+                    src={src}
+          className={`thumbnail${isSelected ? ' selected' : ''}`}
+          style={ImageStyle(width, height)}
         />
-        <div className="checked">
-          {/*<img src={imgCheck} style={{ width: 75, height: 75, objectFit: "cover" }}/>*/}
-          <div className="icon"/>
+        <div className='checked'>
+          {/* <img src={imgCheck} style={{ width: 75, height: 75, objectFit: "cover" }}/> */}
+          <div className='icon' />
         </div>
       </div>
     )
